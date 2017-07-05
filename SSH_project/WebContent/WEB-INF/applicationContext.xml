@@ -70,6 +70,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="mappingResources">
 			<list>
 				<value>com/josh/ssh/beans/User.hbm.xml</value>
+				<value>com/josh/ssh/beans/BookInfo.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -86,20 +87,47 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
+	<!-- UserDao Bean -->
 	<bean id="baseDao" class="com.josh.ssh.daoImpl.UserDao">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-
-	<!--用户注册业务逻辑类 -->
+	
 	<bean id="userManager" class="com.josh.ssh.serviceImpl.UserManagerImpl">
 		<property name="dao">
 			<ref bean="baseDao" />
 		</property>
 	</bean>
 	
+	<bean id="regAction" class="com.josh.ssh.action.RegisterAction">
+		<property name="userManager">
+			<ref bean="userManager" />
+		</property>
+	</bean>
+
+	<!-- Book library bean -->
+	<bean id="bookDao" class="com.josh.ssh.daoImpl.BookDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="bookManager" class="com.josh.ssh.serviceImpl.BookManagerImpl">
+		<property name="bookDao">
+			<ref bean="bookDao" />
+		</property>
+	</bean>
+	
+	<!-- more bean definitions go here -->
+	<!-- solving the transaction listener problem, make all transactional-->
+	<tx:annotation-driven transaction-manager="transactionManager" 
+			proxy-target-class="true" />  
+
+	<!-- ***************************************** -->
 	<!-- 
+	The Unused method to deal with "read only" problem
+	The problem is solved by the transaction listener
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
     	<tx:attributes>
         	<tx:method name="get*" propagation="REQUIRED" read-only="true"/>
@@ -109,24 +137,16 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
     	</tx:attributes>
 	</tx:advice>
 	<tx:annotation-driven transaction-manager="txManager"/>
-		 -->
-		 
-	<!-- 
+	
 	<bean id="txManager"   
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"  
         p:dataSource-ref="dataSource">  
 	</bean>   
 	<tx:annotation-driven transaction-manager="txManager"/> 
 		 -->
+	<!-- ***************************************** -->
 	
-	<bean id="regAction" class="com.josh.ssh.action.RegisterAction">
-		<property name="userManager">
-			<ref bean="userManager" />
-		</property>
-	</bean>
-
-	<!-- more bean definitions go here -->
-	<tx:annotation-driven transaction-manager="transactionManager" 
-			proxy-target-class="true" />  
+		 
+	
 	
 </beans>

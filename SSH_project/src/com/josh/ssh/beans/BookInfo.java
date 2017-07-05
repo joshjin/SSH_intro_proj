@@ -3,27 +3,26 @@ import java.sql.Timestamp;
 
 
 
-public class User {
+public class BookInfo {
 	
-	/*
-	private int autoID;
+	private Integer autoID;
 	private String title;
 	private String author;
 	private String press;
 	private Timestamp publishdate;
 	private Double price;
 	
-	public User(){
+	public BookInfo(){
 	}
 	
-	public User(int autoID, String title, String author, String press){
+	public BookInfo(int autoID, String title, String author, String press){
 		this.title = title;
 		this.author = author;
 		this.press = press;
 		this.autoID = autoID;
 	}
 	
-	public User(int autoID, String title, String author, String press, Timestamp publishdate, Double price){
+	public BookInfo(int autoID, String title, String author, String press, Timestamp publishdate, Double price){
 		this.title = title;
 		this.author = author;
 		this.press = press;
@@ -32,12 +31,14 @@ public class User {
 		this.price = price;
 	}
 	
-
-	public Integer getAutoId() {
+	//getter and setter must match the name of the variables
+	//which muust be the same as the hbm.xml files
+	//name=<NAME_IN_THE_ENTITY> column=<NAME_IN_THE_TABLE>
+	public Integer getAutoID() {
 		return this.autoID;
 	}
 
-	public void setAutoId(Integer autoID) {
+	public void setAutoID(Integer autoID) {
 		this.autoID = autoID;
 	}
 
@@ -80,44 +81,5 @@ public class User {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-		*/
-
-	
-    private String username;  
-    private String password; 
-    private int userId;
-    private int gender;  
-  
-    public String getUsername() {  
-        return username;  
-    }  
-  
-    public void setUsername(String username) {  
-        this.username = username;  
-    }  
-  
-    public String getPassword() {  
-        return password;  
-    }  
-  
-    public void setPassword(String password) {  
-        this.password = password;  
-    }  
-    
-    public int getUserId() {  
-        return userId;  
-    }  
-  
-    public void setUserId(int userId) {  
-        this.userId = userId;  
-    }  
-
-    public int getGender() {  
-        return gender;  
-    }  
-  
-    public void setGender(int gender) {  
-        this.gender = gender;  
-    }  
-	 
+		
 }

@@ -1,9 +1,9 @@
 package com.josh.ssh.dao;
 
 import org.hibernate.HibernateException;  
-import org.hibernate.Session;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+//import org.hibernate.Session;
+//import org.springframework.transaction.annotation.Propagation;
 
 @Transactional
 public interface BaseDao {

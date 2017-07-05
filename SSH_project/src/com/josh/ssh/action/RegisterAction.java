@@ -3,7 +3,6 @@ package com.josh.ssh.action;
 import com.opensymphony.xwork2.ActionSupport;  
 import com.josh.ssh.forms.UserForm;  
 import com.josh.ssh.service.UserManager;  
-import com.josh.ssh.serviceImpl.UserManagerImpl;  
   
 public class RegisterAction extends ActionSupport {  
 	

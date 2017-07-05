@@ -4,8 +4,8 @@
                             "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >  
   
 <hibernate-mapping package="com.josh.ssh.beans">  
-	<!-- 
-	<class name="User" table="BOOKLIB">
+
+	<class name="BookInfo" table="BOOKLIB">
 		<id name="autoID" column="AUTO_ID">
 			<generator class="assigned"></generator>
 		</id>
@@ -20,17 +20,4 @@
 		<property name="price" column="PRICE" type="java.lang.Double"
 			precision="8"></property>
 	</class>
-		 -->
-	
-    <class name="User" table="user_1">  
-        <id name="userId" column="userId">  
-            <generator class="assigned"></generator>  
-        </id>  
-        <property name="username" column="userName" type="java.lang.String"  
-            not-null="true" length="16"></property>  
-        <property name="password" column="password" type="java.lang.String"  
-            not-null="true" length="16" />  
-        <property name="gender" column="gender" type="java.lang.Integer" length="1" />  
-    </class>  
-
 </hibernate-mapping>  
